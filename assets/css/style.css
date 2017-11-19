@@ -1,3 +1,4 @@
-#your-char img {
+#char-select img, #your-char img, #enemy-select img {
   max-width: 200px;
+  max-height: 200px;
 }
