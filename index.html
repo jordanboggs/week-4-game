@@ -16,18 +16,26 @@
       </div>
     </div>
     <div id="main-body" class="row">
-      <div id="game-space" class="col-xs-12 col-sm-12 col-md-9 col-lg-9">
+        <div id="messages" class="col-xs-12 col-sm-12 col-md-3 col-md-push-9 col-lg-3 col-lg-push-9">
+            <h3>Messages go here</h3>
+        </div>
+      <div id="game-space" class="col-xs-12 col-sm-12 col-md-9 col-md-pull-3 col-lg-9 col-lg-pull-3">
         <div id="char-select">
 
         </div>
         <div id="your-char">
 
         </div>
-        <div id="current-enemy">
+        <div id="enemy-select">
 
         </div>
         <div id="fight-data">
-          
+          <h3>Player HP: <span id="player-hp"></span></h3>
+          <button type="button" class="btn btn-danger">Attack</button>
+          <h3>Enemy HP: <span id="enemy-hp"></span></h3>
+        </div>
+        <div id="current-enemy">
+
         </div>
       </div>
     </div>
