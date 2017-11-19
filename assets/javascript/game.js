@@ -41,10 +41,18 @@ var phase = 0;
 $("#luke").on("click", function() {
   if (phase === 0) {
     var transit = $("#luke").html();
-    console.log(transit);
+
     // take luke.jpg out of #char-select
     $("#luke").hide();
+
     // write luke.jpg to #your-char
     $("#your-char").html(transit);
+
+    // move the rest of #char-select to #enemy-select
+    transit = $("#char-select").html();
+    
+    $("#obi-wan").hide();
+
+    $("#enemy-select").html(transit);
   }
 });
