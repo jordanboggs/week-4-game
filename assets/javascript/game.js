@@ -36,23 +36,51 @@ var avatar = {
  * 4: Game over: loss :(
  */
 var phase = 0;
+var playerSelection;
 
 // PLAYER SELECT
-$("#luke").on("click", function() {
+$(".char").click(function () {
+  var id = "#" + $(this).attr('id');
+  charClick(id);
+
+  if (id === "#luke") {
+    playerSelection = avatar.luke;
+  } else if (id === "obi-wan") {
+    playerSelection = avatar.obiWan;
+  } else if (id === "darth-vader") {
+    playerSelection = avatar.darthVader;
+  } else if (id === "emperor") {
+    playerSelection = avatar.emperor;
+  } else {
+    console.log("playerSelection invalid");
+  }
+});
+
+function charClick(char) {
   if (phase === 0) {
-    var transit = $("#luke").html();
+    var transit = $(char).html();
 
-    // take luke.jpg out of #char-select
-    $("#luke").hide();
+    // take char out of #char-select
+    $(char).hide();
 
-    // write luke.jpg to #your-char
+    // write char to #your-char
     $("#your-char").html(transit);
 
     // move the rest of #char-select to #enemy-select
     transit = $("#char-select").html();
-    
     $("#char-select").children().hide();
-
     $("#enemy-select").html(transit);
+
+    phase = 1;
   }
-});
+
+  if (phase === 1) {
+    var transit = $(char).html();
+
+    // take char out of #enemy-select
+    $(char).hide();
+
+    // write char to #current-enemy
+    $("current-enemy").html(transit);
+  }
+}
