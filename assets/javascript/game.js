@@ -51,7 +51,7 @@ $("#luke").on("click", function() {
     // move the rest of #char-select to #enemy-select
     transit = $("#char-select").html();
     
-    $("#obi-wan").hide();
+    $("#char-select").children().hide();
 
     $("#enemy-select").html(transit);
   }
