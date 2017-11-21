@@ -38,27 +38,10 @@ var avatar = {
 var phase = 0;
 var playerSelection;
 
-// PLAYER SELECT
-$(".char").click(function () {
-  var id = "#" + $(this).attr('id');
-  charClick(id);
-
-  if (id === "#luke") {
-    playerSelection = avatar.luke;
-  } else if (id === "obi-wan") {
-    playerSelection = avatar.obiWan;
-  } else if (id === "darth-vader") {
-    playerSelection = avatar.darthVader;
-  } else if (id === "emperor") {
-    playerSelection = avatar.emperor;
-  } else {
-    console.log("playerSelection invalid");
-  }
-});
-
 function charClick(char) {
   if (phase === 0) {
-    var transit = $(char).html();
+    var selection = char;
+    var transit = $(char).attr("id","class","src","alt");
 
     // take char out of #char-select
     $(char).hide();
@@ -67,20 +50,48 @@ function charClick(char) {
     $("#your-char").html(transit);
 
     // move the rest of #char-select to #enemy-select
-    transit = $("#char-select").html();
+    transit = $("#char-select").attr("id","class","src","alt");
     $("#char-select").children().hide();
     $("#enemy-select").html(transit);
 
-    phase = 1;
+    // now select character data
+    if (selection === "#luke") {
+      playerSelection = avatar.luke;
+    } 
+    else if (selection === "#obi-wan") {
+      playerSelection = avatar.obiWan;
+    } 
+    else if (selection === "#darth-vader") {
+      playerSelection = avatar.darthVader;
+    } 
+    else if (selection === "#emperor") {
+      playerSelection = avatar.emperor;
+    } 
+    else {
+      console.log("playerSelection invalid");
+    }
+
+    // advance to next phase
+    phase = 1; 
   }
-
-  if (phase === 1) {
-    var transit = $(char).html();
-
+  else if (phase === 1) {
+    var selection = char;
+    var transit = $(char).attr("id","class","src","alt");
+    
     // take char out of #enemy-select
     $(char).hide();
 
     // write char to #current-enemy
     $("current-enemy").html(transit);
+
+    // hide the rest of #enemy-select
+    $("enemy-select").children().hide();
   }
 }
+
+// PLAYER SELECT
+$(".char").click(function () {
+  var id = "#" + $(this).attr('id');
+  console.log("Click event:",id);
+  charClick(id);
+});
