@@ -161,7 +161,7 @@ function displayHp() {
 $("#attack").click(function () {
   console.log("Attack!");
   enemyHp -= playerAp;
-  playerAp *= 2;
+  playerAp += playerAp;
   console.log("enemyHp:",enemyHp);
   playerHp -= enemySelection.cap;
   console.log("playerHp:",playerHp);
