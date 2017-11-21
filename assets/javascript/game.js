@@ -37,6 +37,9 @@ var avatar = {
  */
 var phase = 0;
 var playerSelection;
+var enemySelection;
+var playerHp;       // we don't want to change the object
+var enemyHp;        // we don't want to change the object
 
 function charClick(char) {
   if (phase === 0) {
@@ -88,10 +91,28 @@ function charClick(char) {
     $("#enemy-select-h2").hide();
     $("#enemy-select").children().hide();
 
+    // now select character data
+    if (selection === "#luke") {
+      enemySelection = avatar.luke;
+    } 
+    else if (selection === "#obi-wan") {
+      enemySelection = avatar.obiWan;
+    } 
+    else if (selection === "#darth-vader") {
+      enemySelection = avatar.darthVader;
+    } 
+    else if (selection === "#emperor") {
+      enemySelection = avatar.emperor;
+    } 
+    else {
+      console.log("playerSelection invalid");
+    }
+
     // advance to next phase
     phase = 2;
+    beginPhase2();
   }
-}
+} // end function charClick
 
 // PLAYER SELECT
 $(".char").click(function () {
@@ -99,3 +120,23 @@ $(".char").click(function () {
   console.log("Click event:",id,"Phase:",phase);
   charClick(id);
 });
+
+// Set up UI for gameplay
+function beginPhase2() {
+  // Log selections
+  console.log("playerSelection:",playerSelection);
+  console.log("enemySelection",enemySelection);
+
+  // Display fight data
+  $("#fight-data").show();
+
+  // Initialize HP
+  playerHp = playerSelection.hp;
+  console.log("playerHp:",playerHp);  
+  $("#player-hp").text(playerSelection.hp);
+  enemyHp = enemySelection.hp;
+  console.log("enemyHp:",enemyHp);
+  $("#enemy-hp").text(enemySelection.hp);
+
+} // end function beginPhase2
+
