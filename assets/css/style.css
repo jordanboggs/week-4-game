@@ -1,3 +1,11 @@
 #fight-data {
   display: none;
 }
+
+#your-char-h2 {
+  display: none;
+}
+
+#current-enemy-h2 {
+  display: none;
+}

@@ -6,21 +6,25 @@
 
 var avatar = {
   luke: {
+    name: "Luke Skywalker",
     hp: 100,
     ap: 6,
     cap: 18
   },
   obiWan: {
+    name: "Obi-Wan Kenobi",
     hp: 80,
     ap: 8,
     cap: 20
   },
   darthVader: {
+    name: "Darth Vader",
     hp: 120,
     ap: 6,
     cap: 18
   },
   emperor: {
+    name: "Emperor Palpatine",
     hp: 70,
     ap: 10,
     cap: 22
@@ -40,24 +44,14 @@ var playerSelection;
 var enemySelection;
 var playerHp;       // we don't want to change the object
 var enemyHp;        // we don't want to change the object
+var playerAp;       // we don't want to change the object
 
 function charClick(char) {
   if (phase === 0) {
     var selection = char;
     var transit = $(char).attr("id","class","src","alt");
 
-    // take char out of #char-select
-    $(char).hide();
-
-    // write char to #your-char
-    $("#your-char").html(transit);
-
-    // move the rest of #char-select to #enemy-select
-    transit = $("#char-select").attr("id","class","src","alt");
-    $("#char-select").children().hide();
-    $("#enemy-select").html(transit);
-
-    // now select character data
+    // select character data
     if (selection === "#luke") {
       playerSelection = avatar.luke;
     } 
@@ -74,6 +68,19 @@ function charClick(char) {
       console.log("playerSelection invalid");
     }
 
+    // take char out of #char-select
+    $(char).hide();
+    
+    // write char to #your-char
+    $("#your-char-h2").show();
+    $("#your-char").html(transit);
+    $("#char-name").html("<h3>"+playerSelection.name+"</h3>");
+
+    // move the rest of #char-select to #enemy-select
+    transit = $("#char-select").attr("id","class","src","alt");
+    $("#char-select").children().hide();
+    $("#enemy-select").html(transit);
+
     // advance to next phase
     phase = 1; 
   }
@@ -81,17 +88,7 @@ function charClick(char) {
     var selection = char;
     var transit = $(selection).attr("id","class","src","alt");
     
-    // take char out of #enemy-select
-    $(selection).hide();
-
-    // write char to #current-enemy
-    $("#current-enemy").html(transit);
-
-    // hide the rest of #enemy-select
-    $("#enemy-select-h2").hide();
-    $("#enemy-select").children().hide();
-
-    // now select character data
+    // select character data
     if (selection === "#luke") {
       enemySelection = avatar.luke;
     } 
@@ -107,6 +104,18 @@ function charClick(char) {
     else {
       console.log("playerSelection invalid");
     }
+
+    // take char out of #enemy-select
+    $(selection).hide();
+    
+    // write char to #current-enemy
+    $("#current-enemy-h2").show();
+    $("#current-enemy").html(transit);
+    $("#enemy-name").html("<h3>"+enemySelection.name+"</h3>");
+
+    // hide the rest of #enemy-select
+    $("#enemy-select-h2").hide();
+    $("#enemy-select").children().hide();
 
     // advance to next phase
     phase = 2;
@@ -132,11 +141,29 @@ function beginPhase2() {
 
   // Initialize HP
   playerHp = playerSelection.hp;
-  console.log("playerHp:",playerHp);  
-  $("#player-hp").text(playerSelection.hp);
   enemyHp = enemySelection.hp;
-  console.log("enemyHp:",enemyHp);
-  $("#enemy-hp").text(enemySelection.hp);
+  displayHp();
+
+  // Initialize AP
+  playerAp = playerSelection.ap;
 
 } // end function beginPhase2
 
+// This function updates HP displays
+function displayHp() {
+  console.log("playerHp:",playerHp);  
+  $("#player-hp").text(playerHp);
+  console.log("enemyHp:",enemyHp);
+  $("#enemy-hp").text(enemyHp);
+} // end function displayHp
+
+// What happens when you click attack?
+$("#attack").click(function () {
+  console.log("Attack!");
+  enemyHp -= playerAp;
+  playerAp *= 2;
+  console.log("enemyHp:",enemyHp);
+  playerHp -= enemySelection.cap;
+  console.log("playerHp:",playerHp);
+  displayHp();
+});
