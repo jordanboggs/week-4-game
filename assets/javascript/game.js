@@ -76,22 +76,26 @@ function charClick(char) {
   }
   else if (phase === 1) {
     var selection = char;
-    var transit = $(char).attr("id","class","src","alt");
+    var transit = $(selection).attr("id","class","src","alt");
     
     // take char out of #enemy-select
-    $(char).hide();
+    $(selection).hide();
 
     // write char to #current-enemy
-    $("current-enemy").html(transit);
+    $("#current-enemy").html(transit);
 
     // hide the rest of #enemy-select
-    $("enemy-select").children().hide();
+    $("#enemy-select-h2").hide();
+    $("#enemy-select").children().hide();
+
+    // advance to next phase
+    phase = 2;
   }
 }
 
 // PLAYER SELECT
 $(".char").click(function () {
   var id = "#" + $(this).attr('id');
-  console.log("Click event:",id);
+  console.log("Click event:",id,"Phase:",phase);
   charClick(id);
 });
