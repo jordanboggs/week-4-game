@@ -60,6 +60,7 @@ var playerHp;
 var enemyHp;        
 var playerAp;       
 var playerBaseAp;
+var rogueGallery;
 
 function charClick(char) {
   if (phase === 0) {
@@ -99,6 +100,7 @@ function charClick(char) {
     transit = $("#char-select").attr("id","class","src","alt");
     $("#char-select").children().hide();
     $("#enemy-select").html(transit);
+    rogueGallery = $("#enemy-select").html();
 
     // advance to next phase
     phase = 1; 
@@ -211,21 +213,30 @@ var checkHp = function() {
     // Go back to enemy selection
     phase = 1;
 
+    // Hide what's currently showing
+    $("#play-area").hide(); 
+    $("#fight-data").hide();
+
     // Set display to enemy selection MINUS the already 
     // chosen characters
-    $("#char-select").show();
+    $("#enemy-select-h2").show();
+    
 
     // Available characters are only ones that have not been selected
-    var roster = [Luke, ObiWan, DarthVader, Emperor];
-    for (i = 0; i < roster.length; i++) {
-      // Let's pick an object
-      var checkIt = roster[i];
-      if (!checkIt.selected) {
-        console.log("Display " + checkIt.name);
-        // display the character
-      } else {
-        console.log(checkIt.name + "not available for selection.");
-      }
-    }
+    // var roster = [Luke, ObiWan, DarthVader, Emperor];
+    // for (i = 0; i < roster.length; i++) {
+    //   // Let's pick an object
+    //   var checkIt = roster[i];
+    //   if (!checkIt.selected) {
+    //     console.log("Display " + checkIt.name);
+    //     // display the character
+        
+
+    //   } else {
+    //     console.log(checkIt.name + "not available for selection.");
+    //   }
+    // }
+    $("#enemy-select").html(rogueGallery);
+    console.log(rogueGallery);
   }
 };
