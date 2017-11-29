@@ -4,31 +4,40 @@
  * By Jordan Boggs
  */
 
-var avatar = {
-  luke: {
+var Luke = function() {
+  return {
     name: "Luke Skywalker",
     hp: 100,
     ap: 6,
     cap: 18
-  },
-  obiWan: {
+  };
+};
+
+var ObiWan = function() {
+   return {
     name: "Obi-Wan Kenobi",
     hp: 80,
     ap: 8,
     cap: 20
-  },
-  darthVader: {
+   }
+};
+
+var DarthVader = function() {
+  return {
     name: "Darth Vader",
     hp: 120,
     ap: 6,
     cap: 18
-  },
-  emperor: {
+  };
+};
+
+var Emperor = function() {
+  return {
     name: "Emperor Palpatine",
     hp: 70,
     ap: 10,
     cap: 22
-  }
+  };
 };
 
 /*
@@ -42,9 +51,11 @@ var avatar = {
 var phase = 0;
 var playerSelection;
 var enemySelection;
-var playerHp;       // we don't want to change the object
-var enemyHp;        // we don't want to change the object
-var playerAp;       // we don't want to change the object
+var enemiesRemaining = 3;
+var playerHp;       
+var enemyHp;        
+var playerAp;       
+var playerBaseAp;
 
 function charClick(char) {
   if (phase === 0) {
@@ -53,16 +64,16 @@ function charClick(char) {
 
     // select character data
     if (selection === "#luke") {
-      playerSelection = avatar.luke;
+      playerSelection = new Luke();
     } 
     else if (selection === "#obi-wan") {
-      playerSelection = avatar.obiWan;
+      playerSelection = new ObiWan();
     } 
     else if (selection === "#darth-vader") {
-      playerSelection = avatar.darthVader;
+      playerSelection = new DarthVader();
     } 
     else if (selection === "#emperor") {
-      playerSelection = avatar.emperor;
+      playerSelection = new Emperor();
     } 
     else {
       console.log("playerSelection invalid");
@@ -90,16 +101,16 @@ function charClick(char) {
     
     // select character data
     if (selection === "#luke") {
-      enemySelection = avatar.luke;
+      enemySelection = new Luke();
     } 
     else if (selection === "#obi-wan") {
-      enemySelection = avatar.obiWan;
+      enemySelection = new ObiWan();
     } 
     else if (selection === "#darth-vader") {
-      enemySelection = avatar.darthVader;
+      enemySelection = new DarthVader();
     } 
     else if (selection === "#emperor") {
-      enemySelection = avatar.emperor;
+      enemySelection = new Emperor();
     } 
     else {
       console.log("playerSelection invalid");
@@ -146,6 +157,7 @@ function beginPhase2() {
 
   // Initialize AP
   playerAp = playerSelection.ap;
+  playerBaseAp = playerAp;
 
 } // end function beginPhase2
 
@@ -159,11 +171,39 @@ function displayHp() {
 
 // What happens when you click attack?
 $("#attack").click(function () {
-  console.log("Attack!");
-  enemyHp -= playerAp;
-  playerAp += playerAp;
-  console.log("enemyHp:",enemyHp);
-  playerHp -= enemySelection.cap;
-  console.log("playerHp:",playerHp);
-  displayHp();
+  if (phase === 2) {
+    console.log("Attack!");
+    enemyHp -= playerAp;
+    playerAp += playerBaseAp;
+    console.log("enemyHp:",enemyHp);
+    playerHp -= enemySelection.cap;
+    console.log("playerHp:",playerHp);
+    displayHp();
+
+    // check if player's HP is 0
+    checkHp();
+  } else {
+    console.log("Attack invalid, phase is " + phase);
+  }
 });
+
+// Function to check player's and enemy's hp
+var checkHp = function() {
+  // Check for loss condition
+  if (playerHp <= 0) {
+    phase = 4;
+    console.log("Player has lost");
+    $("#messages").text("You lose :(");
+  } else {
+    console.log("Player HP is " + playerHp);
+  }
+
+  // Check for enemy defeat condition
+  if (enemyHp <= 0) {
+    // Go back to enemy selection
+    phase = 1;
+
+    // Set display to enemy selection MINUS the already 
+    // chosen characters
+  }
+};
