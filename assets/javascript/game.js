@@ -10,7 +10,8 @@ var Luke = function() {
     hp: 100,
     ap: 6,
     cap: 18,
-    selected: false
+    selected: false,
+    id: "#luke"
   };
 };
 
@@ -20,7 +21,8 @@ var ObiWan = function() {
     hp: 80,
     ap: 8,
     cap: 20,
-    selected: false
+    selected: false,
+    id: "#obi-wan"
    }
 };
 
@@ -30,7 +32,8 @@ var DarthVader = function() {
     hp: 120,
     ap: 6,
     cap: 18,
-    selected: false
+    selected: false,
+    id: "#darth-vader"
   };
 };
 
@@ -40,7 +43,8 @@ var Emperor = function() {
     hp: 70,
     ap: 10,
     cap: 22,
-    selected: false
+    selected: false,
+    id: "#emperor"
   };
 };
 
@@ -111,15 +115,19 @@ function charClick(char) {
     
     // select character data
     if (selection === "#luke") {
+      Luke.selected = true;
       enemySelection = new Luke();
     } 
     else if (selection === "#obi-wan") {
+      ObiWan.selected = true;
       enemySelection = new ObiWan();
     } 
     else if (selection === "#darth-vader") {
+      DarthVader.selected = true;
       enemySelection = new DarthVader();
     } 
     else if (selection === "#emperor") {
+      Emperor.selected = true;
       enemySelection = new Emperor();
     } 
     else {
@@ -214,29 +222,27 @@ var checkHp = function() {
     phase = 1;
 
     // Hide what's currently showing
-    $("#play-area").hide(); 
+    $("#enemy-zone").hide(); 
     $("#fight-data").hide();
 
     // Set display to enemy selection MINUS the already 
     // chosen characters
     $("#enemy-select-h2").show();
-    
+    $("#enemy-select").html(rogueGallery);
 
     // Available characters are only ones that have not been selected
-    // var roster = [Luke, ObiWan, DarthVader, Emperor];
-    // for (i = 0; i < roster.length; i++) {
-    //   // Let's pick an object
-    //   var checkIt = roster[i];
-    //   if (!checkIt.selected) {
-    //     console.log("Display " + checkIt.name);
-    //     // display the character
-        
+    var roster = [Luke, ObiWan, DarthVader, Emperor];
+    for (i = 0; i < roster.length; i++) {
+      // Let's pick an object
+      var checkIt = roster[i];
+      console.log("checkIt: " + checkIt);
+      if (checkIt.selected) {
+        console.log("Hide " + checkIt.name + " in id " + checkIt.id);
+        // hide the character
+        $(checkIt.id).css("display","none");
 
-    //   } else {
-    //     console.log(checkIt.name + "not available for selection.");
-    //   }
-    // }
-    $("#enemy-select").html(rogueGallery);
-    console.log(rogueGallery);
+      } 
+    }
+
   }
 };
