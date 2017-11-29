@@ -9,7 +9,8 @@ var Luke = function() {
     name: "Luke Skywalker",
     hp: 100,
     ap: 6,
-    cap: 18
+    cap: 18,
+    selected: false
   };
 };
 
@@ -18,7 +19,8 @@ var ObiWan = function() {
     name: "Obi-Wan Kenobi",
     hp: 80,
     ap: 8,
-    cap: 20
+    cap: 20,
+    selected: false
    }
 };
 
@@ -27,7 +29,8 @@ var DarthVader = function() {
     name: "Darth Vader",
     hp: 120,
     ap: 6,
-    cap: 18
+    cap: 18,
+    selected: false
   };
 };
 
@@ -36,7 +39,8 @@ var Emperor = function() {
     name: "Emperor Palpatine",
     hp: 70,
     ap: 10,
-    cap: 22
+    cap: 22,
+    selected: false
   };
 };
 
@@ -64,15 +68,19 @@ function charClick(char) {
 
     // select character data
     if (selection === "#luke") {
+      Luke.selected = true;
       playerSelection = new Luke();
     } 
     else if (selection === "#obi-wan") {
+      ObiWan.selected = true;
       playerSelection = new ObiWan();
     } 
     else if (selection === "#darth-vader") {
+      DarthVader.selected = true;
       playerSelection = new DarthVader();
     } 
     else if (selection === "#emperor") {
+      Emperor.selected = true;
       playerSelection = new Emperor();
     } 
     else {
@@ -205,5 +213,19 @@ var checkHp = function() {
 
     // Set display to enemy selection MINUS the already 
     // chosen characters
+    $("#char-select").show();
+
+    // Available characters are only ones that have not been selected
+    var roster = [Luke, ObiWan, DarthVader, Emperor];
+    for (i = 0; i < roster.length; i++) {
+      // Let's pick an object
+      var checkIt = roster[i];
+      if (!checkIt.selected) {
+        console.log("Display " + checkIt.name);
+        // display the character
+      } else {
+        console.log(checkIt.name + "not available for selection.");
+      }
+    }
   }
 };
