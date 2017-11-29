@@ -4,7 +4,7 @@
  * By Jordan Boggs
  */
 
-var Luke = function() {
+Luke = function() {
   return {
     name: "Luke Skywalker",
     hp: 100,
@@ -15,7 +15,7 @@ var Luke = function() {
   };
 };
 
-var ObiWan = function() {
+ObiWan = function() {
    return {
     name: "Obi-Wan Kenobi",
     hp: 80,
@@ -26,7 +26,7 @@ var ObiWan = function() {
    }
 };
 
-var DarthVader = function() {
+DarthVader = function() {
   return {
     name: "Darth Vader",
     hp: 120,
@@ -37,7 +37,7 @@ var DarthVader = function() {
   };
 };
 
-var Emperor = function() {
+Emperor = function() {
   return {
     name: "Emperor Palpatine",
     hp: 70,
@@ -231,18 +231,14 @@ var checkHp = function() {
     $("#enemy-select").html(rogueGallery);
 
     // Available characters are only ones that have not been selected
-    var roster = [Luke, ObiWan, DarthVader, Emperor];
-    for (i = 0; i < roster.length; i++) {
-      // Let's pick an object
-      var checkIt = roster[i];
-      console.log("checkIt: " + checkIt);
-      if (checkIt.selected) {
-        console.log("Hide " + checkIt.name + " in id " + checkIt.id);
-        // hide the character
-        $(checkIt.id).css("display","none");
-
-      } 
+    if (Luke.selected) {
+      $("#luke").hide();
+    } else if (ObiWan.selected) {
+      $("#obi-wan").hide();
+    } else if (DarthVader.selected) {
+      $("#darth-vader").hide();
+    } else if (Emperor.selected) {
+      $("#emperor").hide();
     }
-
   }
 };
