@@ -66,6 +66,12 @@ var playerAp;
 var playerBaseAp;
 var rogueGallery;
 
+// PLAYER SELECT
+$(".char").click(function () {
+  var id = "#" + $(this).attr('id');
+  charClick(id);
+});
+
 function charClick(char) {
   if (phase === 0) {
     var selection = char;
@@ -111,7 +117,9 @@ function charClick(char) {
   }
   else if (phase === 1) {
     var selection = char;
+    console.log("selection:",selection);
     var transit = $(selection).attr("id","class","src","alt");
+    console.log("transit",transit);
     
     // select character data
     if (selection === "#luke") {
@@ -131,15 +139,17 @@ function charClick(char) {
       enemySelection = new Emperor();
     } 
     else {
-      console.log("playerSelection invalid");
+      console.log("enemySelection invalid");
     }
 
     // take char out of #enemy-select
     $(selection).hide();
     
     // write char to #current-enemy
+    $("#enemy-zone").show();
     $("#current-enemy-h2").show();
     $("#current-enemy").html(transit);
+    $("#current-enemy").show();
     $("#enemy-name").html("<h3>"+enemySelection.name+"</h3>");
 
     // hide the rest of #enemy-select
@@ -152,19 +162,8 @@ function charClick(char) {
   }
 } // end function charClick
 
-// PLAYER SELECT
-$(".char").click(function () {
-  var id = "#" + $(this).attr('id');
-  console.log("Click event:",id,"Phase:",phase);
-  charClick(id);
-});
-
 // Set up UI for gameplay
 function beginPhase2() {
-  // Log selections
-  console.log("playerSelection:",playerSelection);
-  console.log("enemySelection",enemySelection);
-
   // Display fight data
   $("#fight-data").show();
 
@@ -181,21 +180,16 @@ function beginPhase2() {
 
 // This function updates HP displays
 function displayHp() {
-  console.log("playerHp:",playerHp);  
   $("#player-hp").text(playerHp);
-  console.log("enemyHp:",enemyHp);
   $("#enemy-hp").text(enemyHp);
 } // end function displayHp
 
 // What happens when you click attack?
 $("#attack").click(function () {
   if (phase === 2) {
-    console.log("Attack!");
     enemyHp -= playerAp;
     playerAp += playerBaseAp;
-    console.log("enemyHp:",enemyHp);
     playerHp -= enemySelection.cap;
-    console.log("playerHp:",playerHp);
     displayHp();
 
     // check if player's HP is 0
@@ -210,14 +204,10 @@ var checkHp = function() {
   // Check for loss condition
   if (playerHp <= 0) {
     phase = 4;
-    console.log("Player has lost");
     $("#messages").text("You lose :(");
-  } else {
-    console.log("Player HP is " + playerHp);
   }
-
   // Check for enemy defeat condition
-  if (enemyHp <= 0) {
+  else if (enemyHp <= 0) {
     // Go back to enemy selection
     phase = 1;
 
@@ -240,5 +230,22 @@ var checkHp = function() {
     } else if (Emperor.selected) {
       $("#emperor").hide();
     }
+
+    // PLAYER SELECT
+    $(".char").click(function () {
+      var id = "#" + $(this).attr('id');
+      charClick(id);
+    });
   }
 };
+
+
+/*
+ * CURRENT ISSUES
+ * 
+ * When you select your THIRD enemy, your second enemy is still an
+ * option.
+ * 
+ * Every time a battle starts, player's HP resets
+ * 
+ */
