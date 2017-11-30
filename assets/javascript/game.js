@@ -29,7 +29,7 @@ ObiWan = function() {
 DarthVader = function() {
   return {
     name: "Darth Vader",
-    hp: 120,
+    hp: 1200,
     ap: 6,
     cap: 18,
     selected: false,
@@ -245,6 +245,10 @@ var checkHp = function() {
  * 
  * When you select your THIRD enemy, your second enemy is still an
  * option.
+ * 
+ * What seems to be happening is it remembers your most recently 
+ * selected enemy but none prior to that. Something must be resetting
+ * the display CSS.
  * 
  * Every time a battle starts, player's HP resets
  * 
