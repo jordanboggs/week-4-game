@@ -4,48 +4,40 @@
  * By Jordan Boggs
  */
 
-Luke = function() {
-  return {
-    name: "Luke Skywalker",
-    hp: 100,
-    ap: 6,
-    cap: 18,
-    selected: false,
-    id: "#luke"
-  };
+var luke = {
+  name: "Luke Skywalker",
+  hp: 100,
+  ap: 6,
+  cap: 18,
+  selected: false,
+  id: "#luke"
 };
 
-ObiWan = function() {
-   return {
-    name: "Obi-Wan Kenobi",
-    hp: 80,
-    ap: 8,
-    cap: 20,
-    selected: false,
-    id: "#obi-wan"
-   }
+var obiWan = {
+  name: "Obi-Wan Kenobi",
+  hp: 80,
+  ap: 8,
+  cap: 20,
+  selected: false,
+  id: "#obi-wan"
 };
 
-DarthVader = function() {
-  return {
-    name: "Darth Vader",
-    hp: 1200,
-    ap: 6,
-    cap: 18,
-    selected: false,
-    id: "#darth-vader"
-  };
+var darthVader = {
+  name: "Darth Vader",
+  hp: 1200,
+  ap: 6,
+  cap: 18,
+  selected: false,
+  id: "#darth-vader"
 };
 
-Emperor = function() {
-  return {
-    name: "Emperor Palpatine",
-    hp: 70,
-    ap: 10,
-    cap: 22,
-    selected: false,
-    id: "#emperor"
-  };
+var emperor = {
+  name: "Emperor Palpatine",
+  hp: 70,
+  ap: 10,
+  cap: 22,
+  selected: false,
+  id: "#emperor"
 };
 
 /*
@@ -79,20 +71,20 @@ function charClick(char) {
 
     // select character data
     if (selection === "#luke") {
-      Luke.selected = true;
-      playerSelection = new Luke();
+      luke.selected = true;
+      playerSelection = luke;
     } 
     else if (selection === "#obi-wan") {
-      ObiWan.selected = true;
-      playerSelection = new ObiWan();
+      obiWan.selected = true;
+      playerSelection = obiWan;
     } 
     else if (selection === "#darth-vader") {
-      DarthVader.selected = true;
-      playerSelection = new DarthVader();
+      darthVader.selected = true;
+      playerSelection = darthVader;
     } 
     else if (selection === "#emperor") {
-      Emperor.selected = true;
-      playerSelection = new Emperor();
+      emperor.selected = true;
+      playerSelection =emperor;
     } 
     else {
       console.log("playerSelection invalid");
@@ -123,20 +115,20 @@ function charClick(char) {
     
     // select character data
     if (selection === "#luke") {
-      Luke.selected = true;
-      enemySelection = new Luke();
+      luke.selected = true;
+      enemySelection = luke;
     } 
     else if (selection === "#obi-wan") {
-      ObiWan.selected = true;
-      enemySelection = new ObiWan();
+      obiWan.selected = true;
+      enemySelection = obiWan;
     } 
     else if (selection === "#darth-vader") {
-      DarthVader.selected = true;
-      enemySelection = new DarthVader();
+      darthVader.selected = true;
+      enemySelection = darthVader;
     } 
     else if (selection === "#emperor") {
-      Emperor.selected = true;
-      enemySelection = new Emperor();
+      emperor.selected = true;
+      enemySelection = emperor;
     } 
     else {
       console.log("enemySelection invalid");
@@ -221,13 +213,13 @@ var checkHp = function() {
     $("#enemy-select").html(rogueGallery);
 
     // Available characters are only ones that have not been selected
-    if (Luke.selected) {
+    if (luke.selected) {
       $("#luke").hide();
-    } else if (ObiWan.selected) {
+    } else if (obiWan.selected) {
       $("#obi-wan").hide();
-    } else if (DarthVader.selected) {
+    } else if (darthVader.selected) {
       $("#darth-vader").hide();
-    } else if (Emperor.selected) {
+    } else if (emperor.selected) {
       $("#emperor").hide();
     }
 
