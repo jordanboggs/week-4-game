@@ -250,6 +250,8 @@ var checkHp = function() {
  * selected enemy but none prior to that. Something must be resetting
  * the display CSS.
  * 
+ * If I move away from constructors, I think this will be fixed.
+ * 
  * Every time a battle starts, player's HP resets
  * 
  */
