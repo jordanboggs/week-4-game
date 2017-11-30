@@ -215,11 +215,14 @@ var checkHp = function() {
     // Available characters are only ones that have not been selected
     if (luke.selected) {
       $("#luke").hide();
-    } else if (obiWan.selected) {
+    } 
+    if (obiWan.selected) {
       $("#obi-wan").hide();
-    } else if (darthVader.selected) {
+    } 
+    if (darthVader.selected) {
       $("#darth-vader").hide();
-    } else if (emperor.selected) {
+    } 
+    if (emperor.selected) {
       $("#emperor").hide();
     }
 
@@ -235,15 +238,14 @@ var checkHp = function() {
 /*
  * CURRENT ISSUES
  * 
- * When you select your THIRD enemy, your second enemy is still an
- * option.
- * 
- * What seems to be happening is it remembers your most recently 
- * selected enemy but none prior to that. Something must be resetting
- * the display CSS.
- * 
- * If I move away from constructors, I think this will be fixed.
- * 
  * Every time a battle starts, player's HP resets
+ * 
+ *
+ *
+ * FEATURES LEFT TO BUILD
+ * 
+ * Build a win condition when all enemies are defeated
+ * 
+ * Redistribute people's stats so anyone can win
  * 
  */
