@@ -116,9 +116,7 @@ function charClick(char) {
   }
   else if (phase === 1) {
     var selection = char;
-    console.log("selection:",selection);
     var transit = $(selection).attr("id","class","src","alt");
-    console.log("transit",transit);
     
     // select character data
     if (selection === "#luke") {
@@ -188,9 +186,7 @@ $("#attack").click(function () {
 
     // check if player's HP is 0
     checkHp();
-  } else {
-    console.log("Attack invalid, phase is " + phase);
-  }
+  } 
 });
 
 // Function to check player's and enemy's hp
@@ -209,44 +205,43 @@ var checkHp = function() {
     $("#enemy-zone").hide(); 
     $("#fight-data").hide();
 
-    // Set display to enemy selection MINUS the already 
-    // chosen characters
-    $("#enemy-select-h2").show();
-    $("#enemy-select").html(rogueGallery);
-
-    // Available characters are only ones that have not been selected
-    if (luke.selected) {
-      $("#luke").hide();
-    } 
-    if (obiWan.selected) {
-      $("#obi-wan").hide();
-    } 
-    if (darthVader.selected) {
-      $("#darth-vader").hide();
-    } 
-    if (emperor.selected) {
-      $("#emperor").hide();
-    }
-
     // Check for victory
     if (luke.selected && obiWan.selected && 
-        darthVader.selected && emperor.selected) {
-      $("#messages").html("<h1>Winner!!!!!</h1>");
+      darthVader.selected && emperor.selected) {
+    $("#messages").html("<h1>Winner!!!!!</h1>");
     }
+    else {
+      // Set display to enemy selection MINUS the already 
+      // chosen characters
+      $("#enemy-select-h2").show();
+      $("#enemy-select").html(rogueGallery);
 
-    // PLAYER SELECT
-    $(".char").click(function () {
-      var id = "#" + $(this).attr('id');
-      charClick(id);
-    });
+      // Available characters are only ones that have not been selected
+      if (luke.selected) {
+        $("#luke").hide();
+      } 
+      if (obiWan.selected) {
+        $("#obi-wan").hide();
+      } 
+      if (darthVader.selected) {
+        $("#darth-vader").hide();
+      } 
+      if (emperor.selected) {
+        $("#emperor").hide();
+      }
+
+      // PLAYER SELECT
+      $(".char").click(function () {
+        var id = "#" + $(this).attr('id');
+        charClick(id);
+      });
+    }
   }
 };
 
 
 /*
  * FEATURES LEFT TO BUILD
- * 
- * Build a win condition when all enemies are defeated
  * 
  * Redistribute people's stats so anyone can win
  * 
