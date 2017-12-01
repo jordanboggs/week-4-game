@@ -4,40 +4,40 @@
  * By Jordan Boggs
  */
 
-var luke = {
-  name: "Luke Skywalker",
+var loneStarr = {
+  name: "Lone Starr",
   hp: 90,
   ap: 6,
   cap: 9,
   selected: false,
-  id: "#luke"
+  id: "#lone-starr"
 };
 
-var obiWan = {
-  name: "Obi-Wan Kenobi",
+var vespa = {
+  name: "Princess Vespa",
   hp: 95,
   ap: 6,
   cap: 7,
   selected: false,
-  id: "#obi-wan"
+  id: "#vespa"
 };
 
-var darthVader = {
-  name: "Darth Vader",
+var darkHelmet = {
+  name: "Dark Helmet",
   hp: 80,
   ap: 7,
   cap: 9,
   selected: false,
-  id: "#darth-vader"
+  id: "#dark-helmet"
 };
 
-var emperor = {
-  name: "Emperor Palpatine",
+var president = {
+  name: "President Skroob",
   hp: 75,
   ap: 8,
   cap: 10,
   selected: false,
-  id: "#emperor"
+  id: "#president"
 };
 
 /*
@@ -70,21 +70,21 @@ function charClick(char) {
     var transit = $(char).attr("id","class","src","alt");
 
     // select character data
-    if (selection === "#luke") {
-      luke.selected = true;
-      playerSelection = luke;
+    if (selection === "#lone-starr") {
+      loneStarr.selected = true;
+      playerSelection = loneStarr;
     } 
-    else if (selection === "#obi-wan") {
-      obiWan.selected = true;
-      playerSelection = obiWan;
+    else if (selection === "#vespa") {
+      vespa.selected = true;
+      playerSelection = vespa;
     } 
-    else if (selection === "#darth-vader") {
-      darthVader.selected = true;
-      playerSelection = darthVader;
+    else if (selection === "#dark-helmet") {
+      darkHelmet.selected = true;
+      playerSelection = darkHelmet;
     } 
-    else if (selection === "#emperor") {
-      emperor.selected = true;
-      playerSelection =emperor;
+    else if (selection === "#president") {
+      president.selected = true;
+      playerSelection =president;
     } 
     else {
       console.log("playerSelection invalid");
@@ -123,21 +123,21 @@ function charClick(char) {
     var transit = $(selection).attr("id","class","src","alt");
     
     // select character data
-    if (selection === "#luke") {
-      luke.selected = true;
-      enemySelection = luke;
+    if (selection === "#lone-starr") {
+      loneStarr.selected = true;
+      enemySelection = loneStarr;
     } 
-    else if (selection === "#obi-wan") {
-      obiWan.selected = true;
-      enemySelection = obiWan;
+    else if (selection === "#vespa") {
+      vespa.selected = true;
+      enemySelection = vespa;
     } 
-    else if (selection === "#darth-vader") {
-      darthVader.selected = true;
-      enemySelection = darthVader;
+    else if (selection === "#dark-helmet") {
+      darkHelmet.selected = true;
+      enemySelection = darkHelmet;
     } 
-    else if (selection === "#emperor") {
-      emperor.selected = true;
-      enemySelection = emperor;
+    else if (selection === "#president") {
+      president.selected = true;
+      enemySelection = president;
     } 
     else {
       console.log("enemySelection invalid");
@@ -211,8 +211,8 @@ var checkHp = function() {
     $("#fight-data").hide();
 
     // Check for victory
-    if (luke.selected && obiWan.selected && 
-      darthVader.selected && emperor.selected) {
+    if (loneStarr.selected && vespa.selected && 
+      darkHelmet.selected && president.selected) {
     $("#messages").html("<h1>Winner!!!!!</h1>");
     }
     else {
@@ -222,17 +222,17 @@ var checkHp = function() {
       $("#enemy-select").html(rogueGallery);
 
       // Available characters are only ones that have not been selected
-      if (luke.selected) {
-        $("#luke").hide();
+      if (loneStarr.selected) {
+        $("#lone-starr").hide();
       } 
-      if (obiWan.selected) {
-        $("#obi-wan").hide();
+      if (vespa.selected) {
+        $("#vespa").hide();
       } 
-      if (darthVader.selected) {
-        $("#darth-vader").hide();
+      if (darkHelmet.selected) {
+        $("#dark-helmet").hide();
       } 
-      if (emperor.selected) {
-        $("#emperor").hide();
+      if (president.selected) {
+        $("#president").hide();
       }
 
       // PLAYER SELECT
