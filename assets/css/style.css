@@ -22,3 +22,8 @@
   font-size: 1.2em;
   color: #bbb;
 }
+
+#game-space {
+  border: solid 1px #aa0000;
+  margin-bottom: 48px;
+}
