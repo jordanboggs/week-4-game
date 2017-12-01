@@ -1,3 +1,7 @@
+#enemy-select-h2, #enemy-select {
+  display: none;
+}
+
 #fight-data {
   display: none;
 }

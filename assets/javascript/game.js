@@ -98,6 +98,10 @@ function charClick(char) {
     $("#your-char").html(transit);
     $("#char-name").html("<h3>"+playerSelection.name+"</h3>");
 
+    // show #enemy-select
+    $("#enemy-select-h2").show();
+    $("#enemy-select").show();
+
     // move the rest of #char-select to #enemy-select
     transit = $("#char-select").attr("id","class","src","alt");
     $("#char-select").children().hide();
