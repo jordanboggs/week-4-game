@@ -104,6 +104,13 @@ function charClick(char) {
     $("#enemy-select").html(transit);
     rogueGallery = $("#enemy-select").html();
 
+    // Initialize HP
+    playerHp = playerSelection.hp;
+
+    // Initialize AP
+    playerAp = playerSelection.ap;
+    playerBaseAp = playerAp;
+
     // advance to next phase
     phase = 1; 
   }
@@ -148,6 +155,9 @@ function charClick(char) {
     $("#enemy-select-h2").hide();
     $("#enemy-select").children().hide();
 
+    // Initialize hp
+    enemyHp = enemySelection.hp;
+    
     // advance to next phase
     phase = 2;
     beginPhase2();
@@ -159,15 +169,7 @@ function beginPhase2() {
   // Display fight data
   $("#fight-data").show();
 
-  // Initialize HP
-  playerHp = playerSelection.hp;
-  enemyHp = enemySelection.hp;
   displayHp();
-
-  // Initialize AP
-  playerAp = playerSelection.ap;
-  playerBaseAp = playerAp;
-
 } // end function beginPhase2
 
 // This function updates HP displays
@@ -226,6 +228,12 @@ var checkHp = function() {
       $("#emperor").hide();
     }
 
+    // Check for victory
+    if (luke.selected && obiWan.selected && 
+        darthVader.selected && emperor.selected) {
+      $("#messages").html("<h1>Winner!!!!!</h1>");
+    }
+
     // PLAYER SELECT
     $(".char").click(function () {
       var id = "#" + $(this).attr('id');
@@ -236,12 +244,6 @@ var checkHp = function() {
 
 
 /*
- * CURRENT ISSUES
- * 
- * Every time a battle starts, player's HP resets
- * 
- *
- *
  * FEATURES LEFT TO BUILD
  * 
  * Build a win condition when all enemies are defeated
