@@ -8,7 +8,7 @@ var luke = {
   name: "Luke Skywalker",
   hp: 100,
   ap: 6,
-  cap: 10,
+  cap: 8,
   selected: false,
   id: "#luke"
 };
@@ -17,7 +17,7 @@ var obiWan = {
   name: "Obi-Wan Kenobi",
   hp: 100,
   ap: 6,
-  cap: 8,
+  cap: 7,
   selected: false,
   id: "#obi-wan"
 };
@@ -26,7 +26,7 @@ var darthVader = {
   name: "Darth Vader",
   hp: 100,
   ap: 6,
-  cap: 10,
+  cap: 9,
   selected: false,
   id: "#darth-vader"
 };
@@ -35,7 +35,7 @@ var emperor = {
   name: "Emperor Palpatine",
   hp: 100,
   ap: 6,
-  cap: 12,
+  cap: 10,
   selected: false,
   id: "#emperor"
 };
