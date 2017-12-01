@@ -106,6 +106,7 @@ function charClick(char) {
     transit = $("#char-select").attr("id","class","src","alt");
     $("#char-select").children().hide();
     $("#enemy-select").html(transit);
+    $("#char-select-h2").hide();
     rogueGallery = $("#enemy-select").html();
 
     // Initialize HP
@@ -154,6 +155,7 @@ function charClick(char) {
     $("#enemy-name").html("<h3>"+enemySelection.name+"</h3>");
 
     // hide the rest of #enemy-select
+    $("#rogue-gallery").hide();
     $("#enemy-select-h2").hide();
     $("#enemy-select").children().hide();
 
@@ -218,6 +220,7 @@ var checkHp = function() {
     else {
       // Set display to enemy selection MINUS the already 
       // chosen characters
+      $("#rogue-gallery").show();
       $("#enemy-select-h2").show();
       $("#enemy-select").html(rogueGallery);
 
