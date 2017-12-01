@@ -199,6 +199,7 @@ var checkHp = function() {
   if (playerHp <= 0) {
     phase = 4;
     $("#messages").text("You lose :(");
+    $("#fight-data").hide();
   }
   // Check for enemy defeat condition
   else if (enemyHp <= 0) {
