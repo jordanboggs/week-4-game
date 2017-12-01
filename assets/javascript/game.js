@@ -198,7 +198,7 @@ var checkHp = function() {
   // Check for loss condition
   if (playerHp <= 0) {
     phase = 4;
-    $("#messages").text("You lose :(");
+    $("#messages").text("Evil will always triumph. Because good is dumb.");
     $("#fight-data").hide();
   }
   // Check for enemy defeat condition
@@ -213,7 +213,7 @@ var checkHp = function() {
     // Check for victory
     if (loneStarr.selected && vespa.selected && 
       darkHelmet.selected && president.selected) {
-    $("#messages").html("<h1>Winner!!!!!</h1>");
+    $("#messages").html("<h1>May the Schwartz be with you!</h1>");
     }
     else {
       // Set display to enemy selection MINUS the already 
