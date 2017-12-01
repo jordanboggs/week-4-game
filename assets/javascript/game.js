@@ -8,34 +8,34 @@ var luke = {
   name: "Luke Skywalker",
   hp: 100,
   ap: 6,
-  cap: 18,
+  cap: 10,
   selected: false,
   id: "#luke"
 };
 
 var obiWan = {
   name: "Obi-Wan Kenobi",
-  hp: 80,
-  ap: 8,
-  cap: 20,
+  hp: 100,
+  ap: 6,
+  cap: 8,
   selected: false,
   id: "#obi-wan"
 };
 
 var darthVader = {
   name: "Darth Vader",
-  hp: 1200,
+  hp: 100,
   ap: 6,
-  cap: 18,
+  cap: 10,
   selected: false,
   id: "#darth-vader"
 };
 
 var emperor = {
   name: "Emperor Palpatine",
-  hp: 70,
-  ap: 10,
-  cap: 22,
+  hp: 100,
+  ap: 6,
+  cap: 12,
   selected: false,
   id: "#emperor"
 };
@@ -238,11 +238,3 @@ var checkHp = function() {
     }
   }
 };
-
-
-/*
- * FEATURES LEFT TO BUILD
- * 
- * Redistribute people's stats so anyone can win
- * 
- */
