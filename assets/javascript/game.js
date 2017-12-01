@@ -200,6 +200,8 @@ var checkHp = function() {
   // Check for loss condition
   if (playerHp <= 0) {
     phase = 4;
+    var audio = new Audio("./assets/audio/goodumb.mp3");
+    audio.play();
     $("#messages").text("Evil will always triumph. Because good is dumb.");
     $("#fight-data").hide();
   }
@@ -215,7 +217,9 @@ var checkHp = function() {
     // Check for victory
     if (loneStarr.selected && vespa.selected && 
       darkHelmet.selected && president.selected) {
-    $("#messages").html("<h1>May the Schwartz be with you!</h1>");
+      var audio = new Audio("./assets/audio/spaceballs_schwartz1.wav");
+      audio.play();
+      $("#messages").html("<h1>May the Schwartz be with you!</h1>");
     }
     else {
       // Set display to enemy selection MINUS the already 
